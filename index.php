@@ -2,6 +2,7 @@
 // 引用函数库，设置基础环境信息
 include('function.php');
 include('curl.php');
+// 屏蔽所有错误
 error_reporting(0);
 SESSION_START();
 header("Content-type: image/PNG");
