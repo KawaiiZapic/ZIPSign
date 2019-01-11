@@ -8,7 +8,7 @@ header("Content-type: image/PNG");
 
 // 然并卵，用文件储存访问量并不是什么高明的方法
 // 在高并发请求下很容易出现文件死锁导致访问量变成 0
-if(!file_exist("counter.dat")) {
+if(!file_exists("counter.dat")) {
     file_put_contents("counter.dat", 1);
 }
 $counter = intval(file_get_contents("counter.dat"));
