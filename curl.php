@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 //获取历史上的今天事件
 function get_history() {
     $hurl = curl_init();
