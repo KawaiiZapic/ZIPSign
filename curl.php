@@ -12,7 +12,7 @@ function get_history() {
     curl_setopt($hurl, CURLOPT_FOLLOWLOCATION, 1);
     $historyc = curl_exec($hurl);
     $history = json_decode($historyc, true);
-    $history = $history[mt_rand(1, 15) ];
+    $history = $history[mt_rand(1, 15)];
     $history = str_replace("\n" , "", $history);
     return $history;
 }
@@ -31,13 +31,10 @@ function get_region() {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
     $data = curl_exec($curl);
     //自动删除地理位置里的空格,使显示效果更好
-    if (strpos($data, ' ') !== false) {
-        $region = substr($data, 0, strpos($data, ' '));
-    } else {
-        $region = $data;
-    }
+    $region = str_replace(" " , "", str_replace("	" , "", $data));
+	$region = substr($region, 3);
     //若未能查到地理位置,返回默认消息
-    if (empty($region)) {
+    if(empty($region)) {
         $region = "幻想乡(未知IP)";
     }
     return $region;
