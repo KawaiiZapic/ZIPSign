@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 function get_bro() {
     $sys = $_SERVER['HTTP_USER_AGENT']; //获取用户UA
     if (stripos($sys, "Firefox/") > 0) {
