@@ -20,7 +20,7 @@ function get_history() {
 function get_region() {
     $ip = $_SERVER["REMOTE_ADDR"];
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, "http://opendata.baidu.com/api.php?co=&resource_id=6006&t=1412300361645&ie=utf8&oe=utf-8&cb=&format=json&tn=baidu&query={$ip}");
+    curl_setopt($curl, CURLOPT_URL, "https://api.tcotp.cn/ip/?ip={$ip}");
     curl_setopt($curl, CURLOPT_HEADER, 0);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -30,8 +30,6 @@ function get_region() {
 	curl_setopt($curl, CURLOPT_TIMEOUT, 5);
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
     $data = curl_exec($curl);
-    $data = json_decode($data, true);
-    $data = $data['data']['0']['location'];
     //自动删除地理位置里的空格,使显示效果更好
     if (strpos($data, ' ') !== false) {
         $region = substr($data, 0, strpos($data, ' '));
@@ -39,7 +37,7 @@ function get_region() {
         $region = $data;
     }
     //若未能查到地理位置,返回默认消息
-    if ($region === NULL) {
+    if (empty($region)) {
         $region = "幻想乡(未知IP)";
     }
     return $region;
