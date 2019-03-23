@@ -48,7 +48,7 @@ $img = imagecreatefrompng("images/{$fileName}");
 $clr = ImageColorAllocate($img, 240, 240, 240);
 imagettftext($img, 20, 0, 10, 45, $clr, $font, "你好,来自{$region}的朋友！");
 imagettftext($img, 20, 0, 10, 75, $clr, $font, "今天是{$date} 星期{$week}");
-imagettftext($img, 20, 0, 10, 105, $clr, $font, "在{$historyt}的今天,{$historye}");
+imagettftext($img, 20, 0, 10, 105, $clr, $font, "在{$history['year']}的今天,{$history['title']}");
 imagettftext($img, 20, 0, 10, 135, $clr, $font, "您的IP是：{$ip}, 是个吉利的数字呢!");
 imagettftext($img, 20, 0, 10, 165, $clr, $font, "您正在 {$os} 上使用 {$bro} 呢");
 imagettftext($img, 20, 0, 10, 195, $clr, $font, "这个签名已经被 {$counter} 次看到了呢");
